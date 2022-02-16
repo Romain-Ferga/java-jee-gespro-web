@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Register Employee</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="employeeForm">
+        <input class="form-control" formControlName="lastname" id="lastname" name="" placeholder="Lastname..."
+               type="text">
+        <input class="form-control" formControlName="firstname" id="firstname" name="" placeholder="firstname..."
+               type="text">
+        <button (click)="register(employeeForm)" class="btn btn-primary" type="submit">Register</button>
+      </form>
+    </div>
+    <pre>{{employeeForm.value | json}}</pre>
+  </div>
+</div>
