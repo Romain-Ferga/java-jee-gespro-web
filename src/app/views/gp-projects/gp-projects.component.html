@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <table boder="1" class="table table-striped">
+                <tr>
+                    <th>Amount</th>
+                    <th>Creation Date</th>
+                    <th>End Date</th>
+                    <th>Start Date</th>
+                    <th>Update Date</th>
+                    <th>Description</th>
+                    <th>Name</th>
+                    <th>Project Code</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let project of projects">
+                    <td>{{project.amount}}</td>
+                    <td>{{project.creationDate}}</td>
+                    <td>{{project.endDate}}</td>
+                    <td>{{project.startDate}}</td>
+                    <td>{{project.updateDate}}</td>
+                    <td>{{project.description}}</td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.projectCode}}</td>
+                    <th>
+                        <button type="button" class="btn btn-primary" (click)="edit(project.id)">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(project.id)">Delete</button>
+                        <button type="button" class="btn btn-danger" (click)="projectPhase(project.id)">Phases</button>
+
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
