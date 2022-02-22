@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>All Organisations : </h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Contact Name</th>
+                <th>Conatact Email</th>
+                <th>Address Web</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let org of gpOrganisations">
+                <td>{{org.orgCode}}</td>
+                <td>{{org.name}}</td>
+                <td>{{org.contactName}}</td>
+                <td>{{org.contactEmail}}</td>
+                <td>{{org.adrWeb}}</td>
+                <td>{{org.phoneNumber}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="edit(org.id)">Edit</button>
+                    <button type="button" class="btn btn-danger" (click)="delete(org.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

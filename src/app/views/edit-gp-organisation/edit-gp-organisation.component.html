@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title text-center">
+                Ajouter une organisation !!!
+            </h5>
+
+            
+            <div class="card-body">
+                <form [formGroup]="organisationForm" (ngSubmit)="save()">
+                    <div class="row my-1">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" placeholder="Organization code" formControlName="orgCode">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control"  placeholder="Name" formControlName="name">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control"  placeholder="Web adress" formControlName="adrWeb">
+                        </div>
+                    </div>
+                      <div class="row my-1">
+                        <div class="form-group col-md-4">
+                            <input type="email" class="form-control"  placeholder="Email" formControlName="contactEmail">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control"  placeholder="Contact name" formControlName="contactName">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="number" class="form-control"  placeholder="Phone number" formControlName="phoneNumber">
+                        </div>
+                      </div>
+                        <button class="btn btn-primary btn-sm" type="submit">Enregistrer </button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+

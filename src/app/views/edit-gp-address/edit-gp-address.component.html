@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title text-center">
+                Ajouter une adresse !!!
+            </h5>
+            <div class="card-body">
+                <form [formGroup]="addrForm" (ngSubmit)="save()">
+                    <div class="row my-1">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" placeholder="Country" formControlName="country">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" placeholder="Street label"
+                                formControlName="streetLabel">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="number" class="form-control" placeholder="Street number"
+                                formControlName="streetNumber">
+                        </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="form-group col-md-2">
+                            <input type="number" class="form-control" placeholder="Zip code" formControlName="zipCode">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <select class="form-control"  formControlName="isMain" >
+                                <option [value] = "1">Yes</option >
+                                <option [value] = "0">No</option >
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select class="form-control"  formControlName="gpOrganization">
+                                <option [selected]="true" >Select Organisation</option>
+                                <option *ngFor="let org of listOrganisations" [ngValue]="org">
+                                    {{org.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select class="form-control" formControlName="gpEmployee">
+                                <option>Select Employee</option>
+                                <option *ngFor="let emp of listEmployees" [ngValue]="emp">
+                                    {{emp.fileNumber}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" type="submit">Enregistrer </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
