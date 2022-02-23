@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card small">
         <div class="card-body mx-5">
-            <form [formGroup]="phaseForm">
+            <form [formGroup]="projectForm">
 
 
                 <div class="row">
@@ -23,47 +23,43 @@
                             <input autocomplete="startDate" class="form-control" formControlName="startDate" required
                                 type="date" title="Start Date" />
                         </div>
+                        <span> Amount </span>
                         <div class="input-group mb-3 col-md-4">
-                            <select class="form-control" formControlName="isEnded">
-                                <option value="">isEnded</option>
-                                <option *ngFor="let item of boolList" [value]="item.value">
-                                    {{ item.label }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-4 col-md-4">
-                            <input autocomplete="phaseCode" class="form-control" formControlName="phaseCode"
-                                placeholder="Phase Code" required type="text" />
-                        </div>
-                        <div class="input-group mb-3 col-md-4">
-                            <select class="form-control" formControlName="status">
-                                <option value="">Status</option>
-                                <option *ngFor="let item of boolList" [value]="item.value">
-                                    {{ item.label }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-3 col-md-4">
-                            <input autocomplete="amount" class="form-control" formControlName="amount"
-                                placeholder="Amount" required type="number" />
+                            <input autocomplete="Amount" class="form-control" formControlName="amount" required
+                                type="number" title="Amount" />
                         </div>
                         <div class="input-group mb-3 col-md-4">
                             <input autocomplete="description" class="form-control" formControlName="description"
                                 placeholder="description" required type="text" />
                         </div>
-
-
-                        <div class="input-group mb-4 col-md-4">
-                            <select class="form-control" formControlName="gpProject">
-                                <option value="">Choisir un Chef de projet</option>
-                                <option *ngFor="let item of listProject" [ngValue]="item">
-                                    {{ item.name }}
-                                </option>
-                            </select>
+                        <div class="input-group mb-3 col-md-4">
+                            <input autocomplete="name" class="form-control" formControlName="name" placeholder="Name"
+                                required type="text" />
                         </div>
 
                         <div class="input-group mb-4 col-md-4">
-                            <button (click)="onSavePhase(phaseForm.value)" [disabled]="phaseForm.invalid"
+                            <input autocomplete="projectCode" class="form-control" formControlName="projectCode"
+                                placeholder="Project Code" required type="text" />
+                        </div>
+                        <div class="input-group mb-4 col-md-4">
+                            <select class="form-control" formControlName="gpChefProjet">
+                                <option value="">Choisir un Chef de projet</option>
+                                <option *ngFor="let item of gpChefProjets" [ngValue]="item">
+                                    {{ item.fileNumber }} {{ item.firstname }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-4 col-md-4">
+                            <select class="form-control" formControlName="gpOrganization">
+                                <option value="">Choisir une Organization</option>
+                                <option *ngFor="let item of gpOrganizations" [ngValue]="item">
+                                    {{ item.name }}
+                                </option>
+
+                            </select>
+                        </div>
+                        <div class="input-group mb-4 col-md-4">
+                            <button (click)="onSaveProject(projectForm.value)" [disabled]="projectForm.invalid"
                                 class="btn btn-primary px-4" type="button">
                                 Ajouter
                             </button>
@@ -74,4 +70,4 @@
         </div>
     </div>
 </div>
-<pre>{{phaseForm.value | json}}</pre>
+<pre>{{projectForm.value | json}}</pre>

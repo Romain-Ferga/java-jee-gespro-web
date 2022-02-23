@@ -6,7 +6,9 @@ import { GpPhasesComponent } from './gp-phases.component';
 
 
 @NgModule({
-  declarations: [GpPhasesComponent],
+  declarations: [
+    GpPhasesComponent
+  ],
   imports: [
     CommonModule,
     GpPhasesRoutingModule
