@@ -69,7 +69,7 @@ export class EditProjectComponent implements OnInit {
     console.log('Project :' + project);
     this.projectServices.create(project).subscribe((res: GpProject) => {
       console.log('Project ' + res.name + ' created');
-      this.router.navigate(['/projects/']);
+      this.router.navigate(['/admin/projects/']);
     });
   }
   get f() {

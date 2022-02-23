@@ -1,3 +1,4 @@
+import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditGpOrganisationComponent } from './views/edit-gp-organisation/edit-gp-organisation.component';
@@ -5,41 +6,11 @@ import { GpEmployeeComponent } from './views/gp-employee/gp-employee/gp-employee
 import { GpOrganisationsComponent } from './views/gp-organisations/gp-organisations.component';
 
 const routes: Routes = [
-  { path: '', component: GpEmployeeComponent },
+  { path: '', component: HomeComponent },
   {
-    path: 'addresses',
+    path: 'admin',
     loadChildren: () =>
-      import('./views/gp-addresses/gp-addresses.module').then(
-        (m) => m.GpAddressesModule
-      ),
-  },
-  {
-    path: 'organisations',
-    loadChildren: () =>
-      import('./views/gp-organisations/gp-organisations.module').then(
-        (m) => m.GpOrganisationsModule
-      ),
-  },
-  {
-    path: 'projects',
-    loadChildren: () =>
-      import('./views/gp-projects/gp-projects.module').then(
-        (m) => m.GpProjectsModule
-      ),
-  },
-  {
-    path: 'phases',
-    loadChildren: () =>
-      import('./views/gp-phases/gp-phases.module').then(
-        (m) => m.GpPhasesModule
-      ),
-  },
-   { path: 'phases',  loadChildren:()=> import('./views/gp-phases/gp-phases.module').then(
-      m=>m.GpPhasesModule)
-  },
-  {
-    path: 'employees',  loadChildren:()=> import('./views/gp-employees/gp-employees.module').then(
-      m=>m.GpEmployeesModule)
+      import('./views/admin/admin.module').then((m) => m.AdminModule),
   },
 ];
 

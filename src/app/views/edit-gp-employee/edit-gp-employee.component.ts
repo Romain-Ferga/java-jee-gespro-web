@@ -8,23 +8,22 @@ import { GpEmployeeService } from 'src/app/services/gp-employee.service';
 @Component({
   selector: 'app-edit-gp-employee',
   templateUrl: './edit-gp-employee.component.html',
-  styleUrls: ['./edit-gp-employee.component.scss']
+  styleUrls: ['./edit-gp-employee.component.scss'],
 })
 export class EditGpEmployeeComponent implements OnInit {
-
-  empForm !: FormGroup;
+  empForm!: FormGroup;
   employe!: GpEmployee;
-  idEmp !: number;
+  idEmp!: number;
 
   constructor(
     private gpEmpFormService: GpEmployeeFormService,
     private gpEmpService: GpEmployeeService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.empForm = this.gpEmpFormService.gpEmployeeForm();
     this.idEmp = this.route.snapshot.params.id;
-    console.log("ID PARAM.....", this.idEmp);
+    console.log('ID PARAM.....', this.idEmp);
   }
 
   ngOnInit(): void {
@@ -32,33 +31,28 @@ export class EditGpEmployeeComponent implements OnInit {
   }
   populateForm() {
     if (this.idEmp) {
-      this.gpEmpService.getByid(this.idEmp).subscribe(
-        (res) => {
-          this.employe = res;
-          this.empForm.patchValue(this.employe);
-          console.log("UPDATE....", this.employe);
-        }
-      );
+      this.gpEmpService.getByid(this.idEmp).subscribe((res) => {
+        this.employe = res;
+        this.empForm.patchValue(this.employe);
+        console.log('UPDATE....', this.employe);
+      });
     }
   }
 
   save() {
     console.log(this.empForm.value);
     if (this.idEmp) {
-      this.gpEmpService.update(this.empForm.value, this.idEmp).subscribe(
-        (res) => {
-          this.router.navigate(['/employees']);
-          console.log("UPDATED....", res);
-        }
-      );
+      this.gpEmpService
+        .update(this.empForm.value, this.idEmp)
+        .subscribe((res) => {
+          this.router.navigate(['/admin/employees']);
+          console.log('UPDATED....', res);
+        });
     } else {
-      this.gpEmpService.create(this.empForm.value).subscribe(
-        (res) => {
-          this.router.navigate(['/employees']);
-          console.log("CREATED....", res);
-        }
-      );
+      this.gpEmpService.create(this.empForm.value).subscribe((res) => {
+        this.router.navigate(['/admin/employees']);
+        console.log('CREATED....', res);
+      });
     }
   }
-
 }

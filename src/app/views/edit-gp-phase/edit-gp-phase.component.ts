@@ -75,7 +75,7 @@ export class EditGpPhaseComponent implements OnInit {
     phase.gpProject = this.project;
     this.phaseServices.create(phase).subscribe((res: GpPhase) => {
       console.log('phase ' + res.phaseCode + ' created');
-      this.router.navigate(['/phases/project/' + this.project.id]);
+      this.router.navigate(['/admin/phases/project/' + this.project.id]);
     });
   }
   get f() {

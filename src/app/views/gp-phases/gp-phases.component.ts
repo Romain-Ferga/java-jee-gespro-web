@@ -45,7 +45,7 @@ export class GpPhasesComponent implements OnInit {
   }
 
   edit(id: any) {
-    this.router.navigate(['/phases/', id]);
+    this.router.navigate(['/admin/phases/', id]);
   }
 
   delete(id: any) {
@@ -54,7 +54,7 @@ export class GpPhasesComponent implements OnInit {
     });
   }
   addproject(id: any) {
-    this.router.navigate(['/phases/project/nouveau', id]);
+    this.router.navigate(['/admin/phases/project/nouveau', id]);
   }
   populateForm() {
     if (this.idProject) {
@@ -66,6 +66,6 @@ export class GpPhasesComponent implements OnInit {
   }
 
   addphase() {
-    this.router.navigate(['/phases/nouveau']);
+    this.router.navigate(['/admin/phases/nouveau']);
   }
 }

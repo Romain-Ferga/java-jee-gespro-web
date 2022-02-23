@@ -8,55 +8,50 @@ import { GpOrganisationService } from 'src/app/services/gp-organisation.service'
 @Component({
   selector: 'app-edit-gp-organisation',
   templateUrl: './edit-gp-organisation.component.html',
-  styleUrls: ['./edit-gp-organisation.component.scss']
+  styleUrls: ['./edit-gp-organisation.component.scss'],
 })
 export class EditGpOrganisationComponent implements OnInit {
-
-  organisationForm !: FormGroup;
-  organisation !: GpOrganization;
-  idOrg !: number;
+  organisationForm!: FormGroup;
+  organisation!: GpOrganization;
+  idOrg!: number;
 
   constructor(
     private gpOrgFormService: GpOrganisationFormService,
     private gpOrgService: GpOrganisationService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router
+  ) {
     this.organisationForm = this.gpOrgFormService.getOrganisationForm();
     this.idOrg = this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
     this.populateForm();
-    console.log("idOrg", this.idOrg);
+    console.log('idOrg', this.idOrg);
   }
 
   populateForm() {
     if (this.idOrg) {
-      this.gpOrgService.getByid(this.idOrg).subscribe(
-        (response) => {
-          this.organisation = response;
-          this.organisationForm.patchValue(this.organisation);
-        }
-      );
+      this.gpOrgService.getByid(this.idOrg).subscribe((response) => {
+        this.organisation = response;
+        this.organisationForm.patchValue(this.organisation);
+      });
     }
   }
 
   save() {
     if (this.idOrg) {
-      this.gpOrgService.update(this.organisationForm.value, this.idOrg).subscribe(
-        (res) => {
-          this.router.navigate(['/organisations/']);
-          console.log("UPDATE..........", res);
-        }
-      );
+      this.gpOrgService
+        .update(this.organisationForm.value, this.idOrg)
+        .subscribe((res) => {
+          this.router.navigate(['/admin/organisations/']);
+          console.log('UPDATE..........', res);
+        });
     } else {
-      this.gpOrgService.create(this.organisationForm.value).subscribe(
-        (res) => {
-          this.router.navigate(['/organisations/']);
-          console.log(res);
-        }
-      );
+      this.gpOrgService.create(this.organisationForm.value).subscribe((res) => {
+        this.router.navigate(['/admin/organisations/']);
+        console.log(res);
+      });
     }
-    
   }
 }

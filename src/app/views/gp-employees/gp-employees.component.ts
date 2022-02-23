@@ -8,38 +8,30 @@ import { GpEmployeeService } from 'src/app/services/gp-employee.service';
 @Component({
   selector: 'app-gp-employees',
   templateUrl: './gp-employees.component.html',
-  styleUrls: ['./gp-employees.component.scss']
+  styleUrls: ['./gp-employees.component.scss'],
 })
 export class GpEmployeesComponent implements OnInit {
-
-
-  employee !: GpEmployee;
-  employeeList !: GpEmployee[];
+  employee!: GpEmployee;
+  employeeList!: GpEmployee[];
 
   constructor(
     private gpEmpFormService: GpEmployeeFormService,
     private gpEmployeeService: GpEmployeeService,
-    private router: Router,
-    ) {
-  }
-
-  
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllEmployees();
   }
 
-
-  edit(id : any) {
-    this.router.navigate(['/employees/', id])
+  edit(id: any) {
+    this.router.navigate(['/admin/employees/', id]);
   }
 
   delete(id: any) {
-    this.gpEmployeeService.delete(id).subscribe(
-      () => {
-        this.getAllEmployees();
-      }
-    )
+    this.gpEmployeeService.delete(id).subscribe(() => {
+      this.getAllEmployees();
+    });
   }
   getAllEmployees() {
     this.gpEmployeeService.getAll().subscribe(
@@ -47,9 +39,8 @@ export class GpEmployeesComponent implements OnInit {
         this.employeeList = res;
         console.log('+++++', this.employeeList);
       },
-      (error) => {
-      }
-    )
+      (error) => {}
+    );
   }
 
   register(employeeForm: FormGroup) {

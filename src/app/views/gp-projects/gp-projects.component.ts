@@ -26,7 +26,7 @@ export class GpProjectsComponent implements OnInit {
     });
   }
   edit(id: any) {
-    this.router.navigate(['/projects/', id]);
+    this.router.navigate(['/admin/projects/', id]);
   }
 
   delete(id: any) {
@@ -35,6 +35,6 @@ export class GpProjectsComponent implements OnInit {
     });
   }
   projectPhase(id: any) {
-    this.router.navigate(['/phases/project/', id]);
+    this.router.navigate(['/admin/phases/project/', id]);
   }
 }
