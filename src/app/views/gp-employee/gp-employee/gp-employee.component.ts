@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {GpEmployeeFormService} from "../../../forms/gp-employee-form.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {GpEmployee} from "../../../models/gp-employee";
-import {GpEmployeeService} from "../../../services/gp-employee.service";
+import { Component, OnInit } from '@angular/core';
+import { GpEmployeeFormService } from "../../../forms/gp-employee-form.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { GpEmployee } from "../../../models/gp-employee";
+import { GpEmployeeService } from "../../../services/gp-employee.service";
 
 @Component({
   selector: 'app-gp-employee',
@@ -15,13 +15,20 @@ export class GpEmployeeComponent implements OnInit {
   employeeList: GpEmployee[] = [];
 
   constructor(private gpEmpFormService: GpEmployeeFormService,
-              private gpEmployeeService: GpEmployeeService,
-              private fb: FormBuilder) {
+    private gpEmployeeService: GpEmployeeService,
+    private fb: FormBuilder) {
     this.fb.group({
       id: ['',],
-      fileNumber: ['', [Validators.compose([Validators.max(5), Validators.required])]],
+      creationDate: [new Date()],
+      email: ['', [Validators.compose([Validators.email, Validators.required])]],
+      fileNumber: ['', Validators.required],
       firstname: ['', [Validators.compose([Validators.required])]],
-      lastname: ['', [Validators.compose([Validators.required])]],
+      lastname: ['',],
+      login: ['', [Validators.compose([Validators.required])]],
+      password: ['', [Validators.compose([Validators.required])]],
+      phoneNumber: ['',],
+      updateDate: ['',],
+      gpAddresses: ['',],
     })
   }
 
@@ -30,7 +37,7 @@ export class GpEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeForm = this.gpEmpFormService.geGpEmployeeForm();
+    this.employeeForm = this.gpEmpFormService.gpEmployeeForm();
     this.getAllEmployees();
     this.getEmployeeById();
     this.gpEmployeeService.delete(150).subscribe(

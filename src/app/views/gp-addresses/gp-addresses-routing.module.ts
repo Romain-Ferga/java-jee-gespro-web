@@ -5,8 +5,16 @@ import { GpAddressesComponent } from './gp-addresses.component';
 
 const routes: Routes = [
   { path: '', component: GpAddressesComponent },
-  { path: 'nouveau', component: EditGpAddressComponent },
-  { path: ':id', component: EditGpAddressComponent }
+  {
+    path: 'nouveau', loadChildren: () => import('../edit-gp-address/edit-gp-address.module').then(
+      (m) => m.EditGpAddressModule
+    ),
+  },
+  {
+    path: ':id', loadChildren: () => import('../edit-gp-address/edit-gp-address.module').then(
+      (m) => m.EditGpAddressModule
+    ),
+  }
 ];
 
 @NgModule({

@@ -13,6 +13,14 @@ const routes: Routes = [
     path: 'organisations',  loadChildren:()=> import('./views/gp-organisations/gp-organisations.module').then(
       m=>m.GpOrganisationsModule)
   },
+  {
+    path: 'phases',  loadChildren:()=> import('./views/gp-phases/gp-phases.module').then(
+      m=>m.GpPhasesModule)
+  },
+  {
+    path: 'employees',  loadChildren:()=> import('./views/gp-employees/gp-employees.module').then(
+      m=>m.GpEmployeesModule)
+  },
 
 ];
 
