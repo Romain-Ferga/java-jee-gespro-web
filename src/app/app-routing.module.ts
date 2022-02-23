@@ -34,7 +34,7 @@ const routes: Routes = [
         (m) => m.GpPhasesModule
       ),
   },
-    path: 'phases',  loadChildren:()=> import('./views/gp-phases/gp-phases.module').then(
+   { path: 'phases',  loadChildren:()=> import('./views/gp-phases/gp-phases.module').then(
       m=>m.GpPhasesModule)
   },
   {
