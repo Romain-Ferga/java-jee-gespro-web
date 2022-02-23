@@ -6,9 +6,16 @@ import { GpOrganisationsComponent } from './gp-organisations.component';
 const routes: Routes = [
 
   { path: '', component: GpOrganisationsComponent, },
-  { path: 'nouveau', component: EditGpOrganisationComponent },
-  { path: ':id', component: EditGpOrganisationComponent }
-
+  {
+    path: 'nouveau', loadChildren: () => import('../edit-gp-organisation/edit-gp-organisation-routing.module').then(
+      (m) => m.EditGpOrganisationRoutingModule
+    ),
+  },
+  {
+    path: ':id', loadChildren: () => import('../edit-gp-organisation/edit-gp-organisation-routing.module').then(
+      (m) => m.EditGpOrganisationRoutingModule
+    ),
+  },
 ];
 
 @NgModule({

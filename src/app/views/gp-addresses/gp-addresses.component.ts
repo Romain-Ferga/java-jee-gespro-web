@@ -21,18 +21,7 @@ export class GpAddressesComponent implements OnInit {
   ngOnInit(): void {
     this.getAddresses();
   }
-
-  getAddressById(id: number) {
-    this.addrService.getByid(id).subscribe(
-      (res) => {
-        this.gpAddress = res;
-        console.log(this.gpAddress);
-      }, (err) => {
-        console.log("ERROR GET ONE ADDRESS...", err.error.message)
-      }
-    )
-  }
-
+  
   getAddresses() {
     this.addrService.getAll().subscribe(
       (res) => {
