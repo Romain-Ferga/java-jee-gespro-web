@@ -41,11 +41,6 @@ const routes: Routes = [
     path: 'employees',  loadChildren:()=> import('./views/gp-employees/gp-employees.module').then(
       m=>m.GpEmployeesModule)
   },
-
-  {
-  },
-  },
-  },
 ];
 
 @NgModule({
