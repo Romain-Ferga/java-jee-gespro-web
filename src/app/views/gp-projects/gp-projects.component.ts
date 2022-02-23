@@ -35,6 +35,6 @@ export class GpProjectsComponent implements OnInit {
     });
   }
   projectPhase(id: any) {
-    this.router.navigate(['/phases/', id]);
+    this.router.navigate(['/phases/project/', id]);
   }
 }

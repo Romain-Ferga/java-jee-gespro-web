@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', component: GpPhasesComponent },
   { path: 'nouveau', component: EditGpPhaseComponent },
   { path: ':id', component: EditGpPhaseComponent },
+  { path: 'project/:id', component: GpPhasesComponent },
 ];
 
 @NgModule({
