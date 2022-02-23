@@ -6,11 +6,7 @@
 
                 <div class="row">
                     <div class="input-group mb-3 col-md-4">
-                        <span> Creation Date </span>
-                        <div class="input-group mb-3 col-md-4">
-                            <input autocomplete="creationDate" class="form-control" formControlName="creationDate"
-                                required type="date" title="Creation Date" />
-                        </div>
+
                         <span> End Date </span>
                         <div class="input-group mb-3 col-md-4">
 
@@ -53,14 +49,7 @@
                         </div>
 
 
-                        <div class="input-group mb-4 col-md-4">
-                            <select class="form-control" formControlName="gpProject">
-                                <option value="">Choisir un Chef de projet</option>
-                                <option *ngFor="let item of listProject" [ngValue]="item">
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
+
 
                         <div class="input-group mb-4 col-md-4">
                             <button (click)="onSavePhase(phaseForm.value)" [disabled]="phaseForm.invalid"
@@ -74,4 +63,5 @@
         </div>
     </div>
 </div>
+<!-- <pre>{{project | json}}</pre> -->
 <pre>{{phaseForm.value | json}}</pre>

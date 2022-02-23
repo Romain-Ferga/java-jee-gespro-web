@@ -12,13 +12,13 @@ export class GpPhasesFormService {
       phaseCode: [''],
       startDate: [''],
       status: [''],
-      updateDate: [''],
+      updateDate: [new Date()],
       amount: [''],
-      creationDate: [''],
+      creationDate: [new Date()],
       description: [''],
       endDate: [''],
       gpBills: [],
-      gpProject: [],
+      gpProject: [''],
     });
   }
 }

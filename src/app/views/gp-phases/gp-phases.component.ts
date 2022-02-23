@@ -53,6 +53,9 @@ export class GpPhasesComponent implements OnInit {
       this.getPhases();
     });
   }
+  addproject(id: any) {
+    this.router.navigate(['/phases/project/nouveau', id]);
+  }
   populateForm() {
     if (this.idProject) {
       this.projectServices.getByid(this.idProject).subscribe((res) => {

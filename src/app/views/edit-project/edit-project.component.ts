@@ -66,12 +66,10 @@ export class EditProjectComponent implements OnInit {
     }
   }
   onSaveProject(project: GpProject) {
-    //project = this.projectForm.value;
-    //project.gpChefProjet = this.gpProjectManager;
-    //project.gpOrganization = this.gpOrganization;
     console.log('Project :' + project);
     this.projectServices.create(project).subscribe((res: GpProject) => {
       console.log('Project ' + res.name + ' created');
+      this.router.navigate(['/projects/']);
     });
   }
   get f() {

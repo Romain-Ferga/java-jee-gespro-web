@@ -16,6 +16,8 @@ export class EditGpPhaseComponent implements OnInit {
   phaseForm: FormGroup | any;
   phase!: GpPhase;
   idPhase!: number;
+  idProject!: number;
+  project!: GpProject;
   listProject!: GpProject[];
   boolList: any[] = [];
   constructor(
@@ -27,6 +29,7 @@ export class EditGpPhaseComponent implements OnInit {
   ) {
     this.phaseForm = this.phaseFormService.getPhasesForm();
     this.idPhase = this.route.snapshot.params.id;
+    this.idProject = this.route.snapshot.params.idproject;
   }
 
   ngOnInit(): void {
@@ -59,12 +62,20 @@ export class EditGpPhaseComponent implements OnInit {
         this.phaseForm.patchValue(this.phase);
       });
     }
+    if (this.idProject) {
+      this.projectServices.getByid(this.idProject).subscribe((res) => {
+        this.project = res;
+        this.phase.gpProject = this.project;
+        this.phaseForm.patchValue(this.phase);
+      });
+    }
   }
   onSavePhase(phase: GpPhase) {
     console.log('phase :' + phase);
-    this.phaseServices.create(phase).subscribe((res: GpProject) => {
-      console.log('phase ' + res.name + ' created');
-      this.router.navigate(['/phases/']);
+    phase.gpProject = this.project;
+    this.phaseServices.create(phase).subscribe((res: GpPhase) => {
+      console.log('phase ' + res.phaseCode + ' created');
+      this.router.navigate(['/phases/project/' + this.project.id]);
     });
   }
   get f() {

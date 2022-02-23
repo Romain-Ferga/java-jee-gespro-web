@@ -1,12 +1,7 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Project Phases : </h2>
-        </div>
-        <div class="col-md-6"><button type="button" class="btn btn-primary" (click)="addphase()">Add Phase</button>
-        </div>
+    <div *ngIf="project.id">
+        <button type="button" class="btn btn-primary" (click)="addproject(project.id)">Add phase to Project</button>
     </div>
-
     <table class="table table-hover">
         <thead>
             <tr>

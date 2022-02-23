@@ -9,10 +9,10 @@ export class GpProjectFormService {
     return this.fb.group({
       id: '',
       amount: [''],
-      creationDate: [''],
+      creationDate: [new Date()],
       endDate: [''],
       startDate: [''],
-      updateDate: [''],
+      updateDate: [new Date()],
       description: [''],
       name: [''],
       projectCode: [''],
