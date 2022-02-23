@@ -1,3 +1,4 @@
+import { EditGpPhaseModule } from './../views/edit-gp-phase/edit-gp-phase.module';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import { EditGpOrganisationModule } from '../views/edit-gp-organisation/edit-gp-
 import { GpOrganisationsModule } from '../views/gp-organisations/gp-organisations.module';
 import { GpProjectsRoutingModule } from '../views/gp-projects/gp-projects-routing.module';
 import { EditProjectModule } from '../views/edit-project/edit-project.module';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -32,6 +34,7 @@ import { EditProjectModule } from '../views/edit-project/edit-project.module';
     GpOrganisationsModule,
     GpProjectsRoutingModule,
     EditProjectModule,
+    EditGpPhaseModule,
   ],
 })
 export class CoreModule {

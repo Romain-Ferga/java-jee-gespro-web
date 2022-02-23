@@ -27,6 +27,13 @@ const routes: Routes = [
         (m) => m.GpProjectsModule
       ),
   },
+  {
+    path: 'phases',
+    loadChildren: () =>
+      import('./views/gp-phases/gp-phases.module').then(
+        (m) => m.GpPhasesModule
+      ),
+  },
 ];
 
 @NgModule({
