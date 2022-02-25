@@ -1,42 +1,47 @@
-<nav class="navbar navbar-expand bg-light navbar-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse  " id="collapsibleNavbar">
-            <ul class="navbar-nav ">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Employees</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin/employees">List Employees</a></li>
-                        <li><a class="dropdown-item" href="/admin/employees/nouveau">New</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Address</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin/addresses">List Address</a></li>
-                        <li><a class="dropdown-item" href="/admin/addresses/nouveau">New</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown">Organisation</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin/organisations">List Organisation</a></li>
-                        <li><a class="dropdown-item" href="/admin/organisations/nouveau">New</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Project</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/admin/projects">List Projects</a></li>
-                        <li><a class="dropdown-item" href="/admin/projects/nouveau">New</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
+<nav class="navbar navbar-expand bg-light navbar-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">GESPRO</a>
+    <button class="navbar-toggler" data-bs-target="#collapsibleNavbar" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse  " id="collapsibleNavbar">
+      <ul class="navbar-nav ">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Employees</a>
+          <ul class="dropdown-menu">
+            <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/employees"
+                   routerLinkActive="active">List Employees</a></li>
+            <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/employees/nouveau"
+                   routerLinkActive="active">New</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Address</a>
+          <ul class="dropdown-menu">
+            <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/addresses"
+                   routerLinkActive="active">List Address</a></li>
+            <li><a class="dropdown-item" routerLink="/admin/addresses/nouveau" routerLinkActive="active">New</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+             role="button">Organizations</a>
+          <ul class="dropdown-menu">
+            <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item" routerLink="/admin/organisations"
+                   routerLinkActive="active">List Organisation</a></li>
+            <li><a [routerLinkActiveOptions]="{exact: true}" class="dropdown-item"
+                   routerLink="/admin/organisations/nouveau"
+                   routerLinkActive="active">New</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">Projects</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/admin/projects">List Projects</a></li>
+            <li><a class="dropdown-item" routerLink="/admin/projects/nouveau">New</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>

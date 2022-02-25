@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { GpOrganization } from 'src/app/models/gp-organization';
-import { GpOrganisationService } from 'src/app/services/gp-organisation.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {GpOrganization} from 'src/app/models/gp-organization';
+import {GpOrganisationService} from 'src/app/services/gp-organisation.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-gp-organisations',
@@ -14,8 +15,10 @@ export class GpOrganisationsComponent implements OnInit {
 
   constructor(
     private organisationService: GpOrganisationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private alertService: ToastrService
+  ) {
+  }
 
   ngOnInit(): void {
     this.getOrganisations();
@@ -28,7 +31,6 @@ export class GpOrganisationsComponent implements OnInit {
         console.log(this.gpOrganisation);
       },
       (err) => {
-        console.log('ERROR GET ONE ORGGANISATION...', err.error.message);
       }
     );
   }
@@ -40,7 +42,6 @@ export class GpOrganisationsComponent implements OnInit {
         console.log(this.gpOrganisations);
       },
       (err) => {
-        console.log('ERROR GET ORGGANISATIONES....', err.error.message);
       }
     );
   }
@@ -50,8 +51,13 @@ export class GpOrganisationsComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.organisationService.delete(id).subscribe((res) => {
-      this.getOrganisations();
-    });
+    if (confirm(`Do want to delete item ${id}`)) {
+      this.organisationService.delete(id).subscribe((res) => {
+          this.getOrganisations();
+        },
+        (error) => {
+          this.alertService.error(`${error.error.message.split(';', 1)}`, `${error.status}`);
+        });
+    }
   }
 }

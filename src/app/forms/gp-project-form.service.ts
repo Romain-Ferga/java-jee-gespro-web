@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
 @Injectable({
   providedIn: 'root',
 })
 export class GpProjectFormService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+  }
+
   getGpProjectForm(): FormGroup {
     return this.fb.group({
       id: '',

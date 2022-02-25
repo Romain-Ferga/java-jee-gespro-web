@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { GpAddressService } from './gp-address.service';
+import {GpAddressService} from './gp-address.service';
 
 describe('GpAddressService', () => {
   let service: GpAddressService;

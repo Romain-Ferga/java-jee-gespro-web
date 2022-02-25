@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { GpPhasesRoutingModule } from './gp-phases-routing.module';
-import { GpPhasesComponent } from './gp-phases.component';
+import {GpPhasesRoutingModule} from './gp-phases-routing.module';
+import {GpPhasesComponent} from './gp-phases.component';
 
 
 @NgModule({
@@ -14,4 +14,5 @@ import { GpPhasesComponent } from './gp-phases.component';
     GpPhasesRoutingModule
   ]
 })
-export class GpPhasesModule { }
+export class GpPhasesModule {
+}

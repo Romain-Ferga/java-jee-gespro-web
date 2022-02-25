@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { EditGpPhaseComponent } from './edit-gp-phase.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [];
 
@@ -8,4 +7,5 @@ const routes: Routes = [];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EditGpPhaseRoutingModule {}
+export class EditGpPhaseRoutingModule {
+}

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditGpEmployeeComponent } from './edit-gp-employee.component';
+import {EditGpEmployeeComponent} from './edit-gp-employee.component';
 
 describe('EditGpEmployeeComponent', () => {
   let component: EditGpEmployeeComponent;
@@ -8,9 +8,9 @@ describe('EditGpEmployeeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditGpEmployeeComponent ]
+      declarations: [EditGpEmployeeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

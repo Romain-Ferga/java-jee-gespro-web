@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditGpPhaseComponent } from './edit-gp-phase.component';
+import {EditGpPhaseComponent} from './edit-gp-phase.component';
 
 describe('EditGpPhaseComponent', () => {
   let component: EditGpPhaseComponent;
@@ -8,9 +8,9 @@ describe('EditGpPhaseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditGpPhaseComponent ]
+      declarations: [EditGpPhaseComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

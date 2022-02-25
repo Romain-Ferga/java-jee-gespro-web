@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { GpAddress } from 'src/app/models/gp-address';
-import { GpAddressService } from 'src/app/services/gp-address.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {GpAddress} from 'src/app/models/gp-address';
+import {GpAddressService} from 'src/app/services/gp-address.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-gp-addresses',
@@ -10,9 +11,10 @@ import { GpAddressService } from 'src/app/services/gp-address.service';
 })
 export class GpAddressesComponent implements OnInit {
   gpAddresses!: GpAddress[];
-  gpAddress!: GpAddress;
 
-  constructor(private addrService: GpAddressService, private router: Router) {}
+  constructor(private addrService: GpAddressService, private router: Router,
+              private alertService: ToastrService) {
+  }
 
   ngOnInit(): void {
     this.getAddresses();
@@ -22,10 +24,8 @@ export class GpAddressesComponent implements OnInit {
     this.addrService.getAll().subscribe(
       (res) => {
         this.gpAddresses = res;
-        console.log(this.gpAddresses);
       },
       (err) => {
-        console.log('ERROR GET ADDRESSES....', err.error.message);
       }
     );
   }
@@ -35,8 +35,15 @@ export class GpAddressesComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.addrService.delete(id).subscribe((res) => {
-      this.getAddresses();
-    });
+    if (confirm(`Do want to delete item ${id}`)) {
+      this.addrService.delete(id).subscribe((res) => {
+          this.getAddresses();
+        },
+        (error) => {
+          this.alertService.error(`${error.error.message.split(';', 1)}`, `${error.status}`);
+        });
+    }
+
+
   }
 }
