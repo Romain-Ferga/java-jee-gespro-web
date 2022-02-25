@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { GpAddressesRoutingModule } from './gp-addresses-routing.module';
-import { GpAddressesComponent } from './gp-addresses.component';
+import {GpAddressesRoutingModule} from './gp-addresses-routing.module';
+import {GpAddressesComponent} from './gp-addresses.component';
 
 
 @NgModule({
@@ -12,4 +12,5 @@ import { GpAddressesComponent } from './gp-addresses.component';
     GpAddressesRoutingModule
   ]
 })
-export class GpAddressesModule { }
+export class GpAddressesModule {
+}

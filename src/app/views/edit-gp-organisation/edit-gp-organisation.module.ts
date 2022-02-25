@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { EditGpOrganisationRoutingModule } from './edit-gp-organisation-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { EditGpOrganisationComponent } from './edit-gp-organisation.component';
+import {EditGpOrganisationRoutingModule} from './edit-gp-organisation-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {EditGpOrganisationComponent} from './edit-gp-organisation.component';
 
 
 @NgModule({
@@ -14,4 +14,5 @@ import { EditGpOrganisationComponent } from './edit-gp-organisation.component';
     ReactiveFormsModule
   ]
 })
-export class EditGpOrganisationModule { }
+export class EditGpOrganisationModule {
+}

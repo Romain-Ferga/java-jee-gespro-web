@@ -1,10 +1,10 @@
-import { GpPhase } from './../../models/gp-phase';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { GpPhaseService } from 'src/app/services/gp-phase.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpProject } from 'src/app/models/gp-project';
-import { GpProjectService } from 'src/app/services/gp-project.service';
+import {GpPhase} from './../../models/gp-phase';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {GpPhaseService} from 'src/app/services/gp-phase.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GpProject} from 'src/app/models/gp-project';
+import {GpProjectService} from 'src/app/services/gp-project.service';
 
 @Component({
   selector: 'app-gp-phases',
@@ -18,6 +18,7 @@ export class GpPhasesComponent implements OnInit {
   project!: GpProject;
   idProject!: number;
   listPhases?: GpPhase[];
+
   constructor(
     private phaseServices: GpPhaseService,
     private router: Router,
@@ -53,9 +54,11 @@ export class GpPhasesComponent implements OnInit {
       this.getPhases();
     });
   }
+
   addproject(id: any) {
     this.router.navigate(['/admin/phases/project/nouveau', id]);
   }
+
   populateForm() {
     if (this.idProject) {
       this.projectServices.getByid(this.idProject).subscribe((res) => {

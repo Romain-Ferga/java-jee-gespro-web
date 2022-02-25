@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { EditGpAddressComponent } from '../edit-gp-address/edit-gp-address.component';
-import { GpAddressesComponent } from './gp-addresses.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {GpAddressesComponent} from './gp-addresses.component';
 
 const routes: Routes = [
-  { path: '', component: GpAddressesComponent },
+  {path: '', component: GpAddressesComponent},
   {
     path: 'nouveau', loadChildren: () => import('../edit-gp-address/edit-gp-address.module').then(
       (m) => m.EditGpAddressModule
@@ -21,4 +20,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GpAddressesRoutingModule { }
+export class GpAddressesRoutingModule {
+}

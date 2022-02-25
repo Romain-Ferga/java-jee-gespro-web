@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,13 @@ export class GpAdressFormService {
   adressForm() {
     return this.fb.group({
       id: ['',],
-      streetNumber: ['', [Validators.compose([Validators.max(5), Validators.required])]],
+      streetNumber: ['', [Validators.compose([Validators.required, Validators.maxLength(5),])]],
       streetLabel: ['', [Validators.compose([Validators.required])]],
       zipCode: ['', [Validators.compose([Validators.required])]],
       country: ['', [Validators.compose([Validators.required])]],
-      isMain: ['', [Validators.compose([Validators.required])]],
-      gpOrganization: [,Validators.required],
-      gpEmployee: [,],
+      isMain: [1, [Validators.compose([Validators.required])]],
+      gpOrganization: [null, Validators.required],
+      gpEmployee: [null, Validators.required]
     })
   }
 }

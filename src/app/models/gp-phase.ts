@@ -1,5 +1,5 @@
-import { GpBill } from './gp-bill';
-import { GpProject } from './gp-project';
+import {GpBill} from './gp-bill';
+import {GpProject} from './gp-project';
 
 export interface GpPhase {
   id?: number;

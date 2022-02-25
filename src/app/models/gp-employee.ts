@@ -1,4 +1,4 @@
-import { GpAddress } from "./gp-address";
+import {GpAddress} from "./gp-address";
 
 export interface GpEmployee {
   id?: number,

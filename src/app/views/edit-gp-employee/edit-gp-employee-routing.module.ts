@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { EditGpEmployeeComponent } from './edit-gp-employee.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {EditGpEmployeeComponent} from './edit-gp-employee.component';
 
 const routes: Routes = [
-  {path : "", component : EditGpEmployeeComponent}
+  {path: "", component: EditGpEmployeeComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class EditGpEmployeeRoutingModule { }
+export class EditGpEmployeeRoutingModule {
+}

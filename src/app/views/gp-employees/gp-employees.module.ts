@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { GpEmployeesRoutingModule } from './gp-employees-routing.module';
-import { GpEmployeesComponent } from './gp-employees.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {GpEmployeesRoutingModule} from './gp-employees-routing.module';
+import {GpEmployeesComponent} from './gp-employees.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -14,4 +14,5 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ]
 })
-export class GpEmployeesModule { }
+export class GpEmployeesModule {
+}

@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpAdressFormService } from 'src/app/forms/gp-adress-form.service';
-import { GpAddress } from 'src/app/models/gp-address';
-import { GpEmployee } from 'src/app/models/gp-employee';
-import { GpOrganization } from 'src/app/models/gp-organization';
-import { GpAddressService } from 'src/app/services/gp-address.service';
-import { GpEmployeeService } from 'src/app/services/gp-employee.service';
-import { GpOrganisationService } from 'src/app/services/gp-organisation.service';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GpAdressFormService} from 'src/app/forms/gp-adress-form.service';
+import {GpAddress} from 'src/app/models/gp-address';
+import {GpEmployee} from 'src/app/models/gp-employee';
+import {GpOrganization} from 'src/app/models/gp-organization';
+import {GpAddressService} from 'src/app/services/gp-address.service';
+import {GpEmployeeService} from 'src/app/services/gp-employee.service';
+import {GpOrganisationService} from 'src/app/services/gp-organisation.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-gp-address',
@@ -20,29 +21,32 @@ export class EditGpAddressComponent implements OnInit {
   idAddr!: number;
   listOrganisations!: GpOrganization[];
   listEmployees!: GpEmployee[];
+  title: string = 'New ';
+
   constructor(
     private gpAddrFormService: GpAdressFormService,
     private gpAddrService: GpAddressService,
     private gpOrgService: GpOrganisationService,
     private route: ActivatedRoute,
     private router: Router,
-    private gpEmpService: GpEmployeeService
+    private gpEmpService: GpEmployeeService,
+    private alertService: ToastrService
   ) {
     this.addrForm = this.gpAddrFormService.adressForm();
     this.idAddr = this.route.snapshot.params.id;
-    console.log('ID PARAM....', this.idAddr);
+  }
+
+  get f() {
+    return this.addrForm.controls;
   }
 
   ngOnInit(): void {
     this.populateForm();
-    this.gpOrgService.getAll().subscribe((res) => {
-      this.listOrganisations = res;
-      console.log('ORG LIST...', res);
-    });
-    this.gpEmpService.getAll().subscribe((res) => {
-      this.listEmployees = res;
-      console.log('EMP LIST...', res);
-    });
+    this.getAllEmployees();
+    this.getAllOrganizations();
+    if (this.idAddr) {
+      this.title = 'Update ';
+    }
   }
 
   populateForm() {
@@ -50,25 +54,45 @@ export class EditGpAddressComponent implements OnInit {
       this.gpAddrService.getByid(this.idAddr).subscribe((res) => {
         this.address = res;
         this.addrForm.patchValue(this.address);
-        console.log('UPDATE....', this.address);
       });
     }
   }
 
+  getAllEmployees() {
+    this.gpEmpService.getAll().subscribe((res) => {
+      this.listEmployees = res;
+    });
+  }
+
+  getAllOrganizations() {
+    this.gpOrgService.getAll().subscribe((res) => {
+      this.listOrganisations = res;
+    });
+  }
+
   save() {
-    console.log(this.addrForm.value);
     if (this.idAddr) {
-      this.gpAddrService
-        .update(this.addrForm.value, this.idAddr)
-        .subscribe((res) => {
-          this.router.navigate(['/admin/addresses/']);
-          console.log('UPDATED....', res);
-        });
+      if (JSON.stringify(this.address) !== JSON.stringify(this.addrForm.value)) {
+        this.gpAddrService
+          .update(this.addrForm.value, this.idAddr)
+          .subscribe((res) => {
+              this.alertService.success(`Item ${res.zipCode} was updated`, 'Success');
+              this.router.navigate(['/admin/addresses/']);
+            },
+            (error) => {
+              this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
+            });
+      } else {
+        this.alertService.warning(`Nothing to update`);
+      }
     } else {
       this.gpAddrService.create(this.addrForm.value).subscribe((res) => {
-        this.router.navigate(['/admin/addresses/']);
-        console.log('CREATED....', res);
-      });
+          this.alertService.success(`Item ${res.zipCode} was created`, 'Success');
+          this.router.navigate(['/admin/addresses/']);
+        },
+        (error) => {
+          this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
+        });
     }
   }
 }

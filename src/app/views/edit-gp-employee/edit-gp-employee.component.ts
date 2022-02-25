@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpEmployeeFormService } from 'src/app/forms/gp-employee-form.service';
-import { GpEmployee } from 'src/app/models/gp-employee';
-import { GpEmployeeService } from 'src/app/services/gp-employee.service';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GpEmployeeFormService} from 'src/app/forms/gp-employee-form.service';
+import {GpEmployee} from 'src/app/models/gp-employee';
+import {GpEmployeeService} from 'src/app/services/gp-employee.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-gp-employee',
@@ -11,48 +12,65 @@ import { GpEmployeeService } from 'src/app/services/gp-employee.service';
   styleUrls: ['./edit-gp-employee.component.scss'],
 })
 export class EditGpEmployeeComponent implements OnInit {
+  title: string = 'New ';
   empForm!: FormGroup;
-  employe!: GpEmployee;
+  employee!: GpEmployee;
   idEmp!: number;
 
   constructor(
     private gpEmpFormService: GpEmployeeFormService,
     private gpEmpService: GpEmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertService: ToastrService
   ) {
     this.empForm = this.gpEmpFormService.gpEmployeeForm();
     this.idEmp = this.route.snapshot.params.id;
-    console.log('ID PARAM.....', this.idEmp);
+  }
+
+  get f() {
+    return this.empForm.controls;
   }
 
   ngOnInit(): void {
     this.populateForm();
+    if (this.idEmp) {
+      this.title = 'Update ';
+    }
   }
+
   populateForm() {
     if (this.idEmp) {
       this.gpEmpService.getByid(this.idEmp).subscribe((res) => {
-        this.employe = res;
-        this.empForm.patchValue(this.employe);
-        console.log('UPDATE....', this.employe);
+        this.employee = res;
+        this.empForm.patchValue(this.employee);
       });
     }
   }
 
   save() {
-    console.log(this.empForm.value);
     if (this.idEmp) {
-      this.gpEmpService
-        .update(this.empForm.value, this.idEmp)
-        .subscribe((res) => {
-          this.router.navigate(['/admin/employees']);
-          console.log('UPDATED....', res);
-        });
+      if (JSON.stringify(this.employee) !== JSON.stringify(this.empForm.value)) {
+        this.gpEmpService
+          .update(this.empForm.value, this.idEmp)
+          .subscribe((res) => {
+              this.alertService.success(`Item ${res.fileNumber} was updated`, 'Success');
+              this.router.navigate(['/admin/employees']);
+            },
+            (error) => {
+              this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
+            });
+      } else {
+        this.alertService.warning(`Nothing to update`);
+      }
     } else {
       this.gpEmpService.create(this.empForm.value).subscribe((res) => {
-        this.router.navigate(['/admin/employees']);
-        console.log('CREATED....', res);
-      });
+          this.alertService.success(`Item ${res.fileNumber} was created`, 'Success');
+          this.router.navigate(['/admin/employees']);
+        },
+        (error) => {
+          this.alertService.error(`Item ${error.error.message.split(';', 1)}`, `${error.status}`);
+        });
     }
   }
 }

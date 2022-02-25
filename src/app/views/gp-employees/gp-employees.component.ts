@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { GpEmployeeFormService } from 'src/app/forms/gp-employee-form.service';
-import { GpEmployee } from 'src/app/models/gp-employee';
-import { GpEmployeeService } from 'src/app/services/gp-employee.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {GpEmployeeFormService} from 'src/app/forms/gp-employee-form.service';
+import {GpEmployee} from 'src/app/models/gp-employee';
+import {GpEmployeeService} from 'src/app/services/gp-employee.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-gp-employees',
@@ -17,8 +17,10 @@ export class GpEmployeesComponent implements OnInit {
   constructor(
     private gpEmpFormService: GpEmployeeFormService,
     private gpEmployeeService: GpEmployeeService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private alertService: ToastrService
+  ) {
+  }
 
   ngOnInit(): void {
     this.getAllEmployees();
@@ -29,21 +31,23 @@ export class GpEmployeesComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.gpEmployeeService.delete(id).subscribe(() => {
-      this.getAllEmployees();
-    });
+    if (confirm(`Do want to delete item ${id}`)) {
+      this.gpEmployeeService.delete(id).subscribe(() => {
+          this.getAllEmployees();
+        },
+        (error) => {
+          this.alertService.error(`${error.error.message.split(';', 1)}`, `${error.status}`);
+        });
+    }
   }
+
   getAllEmployees() {
     this.gpEmployeeService.getAll().subscribe(
       (res) => {
         this.employeeList = res;
-        console.log('+++++', this.employeeList);
       },
-      (error) => {}
+      (error) => {
+      }
     );
-  }
-
-  register(employeeForm: FormGroup) {
-    console.log('++++++++++', employeeForm.value);
   }
 }

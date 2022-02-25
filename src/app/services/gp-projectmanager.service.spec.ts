@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { GpProjectmanagerService } from './gp-projectmanager.service';
+import {GpProjectmanagerService} from './gp-projectmanager.service';
 
 describe('GpProjectmanagerService', () => {
   let service: GpProjectmanagerService;

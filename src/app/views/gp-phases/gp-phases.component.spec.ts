@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GpPhasesComponent } from './gp-phases.component';
+import {GpPhasesComponent} from './gp-phases.component';
 
 describe('GpPhasesComponent', () => {
   let component: GpPhasesComponent;
@@ -8,9 +8,9 @@ describe('GpPhasesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GpPhasesComponent ]
+      declarations: [GpPhasesComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

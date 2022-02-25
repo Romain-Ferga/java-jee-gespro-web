@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import {Injectable} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,7 @@ export class GpEmployeeFormService {
       password: ['', [Validators.compose([Validators.required])]],
       phoneNumber: ['',],
       updateDate: ['',],
-      gpAddresses: [],    })
+      gpAddresses: [],
+    })
   }
 }

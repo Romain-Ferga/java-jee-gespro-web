@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+
 @Injectable({
   providedIn: 'root',
 })
 export class GpPhasesFormService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+  }
+
   getPhasesForm() {
     return this.fb.group({
       id: '',
